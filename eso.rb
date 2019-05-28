@@ -236,7 +236,7 @@ def main
   }
 
   if trees.all? {|tree| tree.check?}
-    input = ARGV[1]
+    input = STDIN.read
     input = input.chars unless input.nil?
     execute trees, input
   else
