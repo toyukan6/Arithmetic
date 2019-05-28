@@ -69,9 +69,9 @@ class Memory
     rl = right.left.calc
     rr = right.right.calc
     if @memory[ll] == @memory[lr]
-      @counter += rl
+      @counter += @memory[rl]
     else
-      @counter += rr
+      @counter += @memory[rr]
     end
   end
 
@@ -92,7 +92,7 @@ class Memory
       @memory[r] = @memory[target]
     when "-"
       if @memory[target] < @memory[l]
-        @counter -= r
+        @counter -= @memory[r]
       end
     when "*"
       if @memory[l] < @memory[r]
@@ -118,7 +118,7 @@ class Memory
     tree = @trees[@counter]
     if tree.value == "/"
       value = tree.left.calc
-      @counter += value
+      @counter += @memory[value]
     elsif tree.value == "="
       if operator? tree.left.value and operator? tree.right.value # a + b = c + d
         both_operator tree.left, tree.right
