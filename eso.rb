@@ -102,7 +102,9 @@ class Memory
       end
     when "/"
       i = @input.shift
-      if @memory[l] < @memory[r]
+      if i.nil?
+        @memory[target] = 0
+      elsif @memory[l] < @memory[r]
         @memory[target] = i.ord
       else
         @memory[target] = i.to_i
